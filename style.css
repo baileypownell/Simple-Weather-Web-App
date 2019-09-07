@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(30deg, rgba(26, 190, 210, 0.5), #0875e7), url("https://res.cloudinary.com/djad06sng/image/upload/v1567884522/david-ballew-pH6-eomaijQ-unsplash.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: multiply;
+  font-family: sans-serif;
+  color: white;
+}
+
+.location,
+.temperature {
+  height: 30vh;
+  width: 75%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.location {
+  flex-direction: column;
+}
+.location h1 {
+  font-size: 20px;
+}
+
+.temperature {
+  flex-direction: column;
+}
+
+body > h2 {
+  font-size: 16px;
+  padding: 5px 0;
+}
+
+.degree-section {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.degree-section span {
+  margin: 10px;
+  font-size: 30px;
+}
+
+.degree-section h2 {
+  font-size: 40px;
+}
+
+@media screen and (min-width: 768px) {
+.location {
+  flex-direction: row;
+}
+
+  .location h1 {
+    font-size: 40px;
+  }
+
+  body > h2 {
+    font-size: 20px;
+  }
+
+  .temperature-description {
+    font-size: 25px;
+    padding: 20px 60px;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+  }
+}
