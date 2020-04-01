@@ -9,6 +9,7 @@ window.addEventListener('load', () => {
   let wind = document.getElementById('windspeed');
   let humid = document.getElementById('humidity');
   let clouds = document.getElementById('cloudCover');
+  let dailsySummary = document.getElementById('dailySummary');
 
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
@@ -23,17 +24,19 @@ window.addEventListener('load', () => {
           //convert to json
           return response.json()
           .then(data => {
-            console.log(data);
             const {temperature, summary, icon, humidity, cloudCover, windSpeed} = data.currently;
+            let Fahrenheit = Math.round(temperature);
             // set DOM elements from the api
-            tempDegree.textContent = temperature;
+            tempDegree.textContent = Math.round(temperature);
             tempDescription.textContent = summary;
-            wind.textContent = "Windspeed: " + windSpeed;
-            humid.textContent = "Humidity: " + humidity;
-            clouds.textContent = "Cloud Cover: " + cloudCover;
-            locationTimezone.textContent = data.timezone;
-              // formula for celsius
-              let celsius = (temperature - 32) * (5/9);
+            wind.textContent = "Windspeed: " + windSpeed + ' MPH';
+            humid.textContent = "Humidity: " + humidity*100 + '%';
+            clouds.textContent = "Cloud Cover: " + cloudCover*100 + '%';
+            locationTimezone.textContent = data.timezone.split('/')[2];
+            // formula for celsius
+            let celsius = (temperature - 32) * (5/9);
+
+            dailySummary.textContent = data.daily.summary;
             // set icon
             setIcons(icon, document.querySelector('.icon'));
 
@@ -44,7 +47,7 @@ window.addEventListener('load', () => {
                 tempDegree.textContent = Math.floor(celsius);
               } else {
                 temperatureSpan.textContent = "F";
-                tempDegree.textContent = temperature;
+                tempDegree.textContent = Fahrenheit;
               }
             });
 
