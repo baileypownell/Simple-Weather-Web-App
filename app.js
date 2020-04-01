@@ -9,7 +9,7 @@ window.addEventListener('load', () => {
   let wind = document.getElementById('windspeed');
   let humid = document.getElementById('humidity');
   let clouds = document.getElementById('cloudCover');
-  let dailsySummary = document.getElementById('dailySummary');
+  let dailySummary = document.getElementById('dailySummary');
 
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
